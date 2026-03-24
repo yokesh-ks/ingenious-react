@@ -30,7 +30,7 @@ export function CodeEditor({ value, onChange, theme = 'vs-dark' }: CodeEditorPro
   return (
     <MonacoEditor
       height="100%"
-      defaultLanguage="typescript"
+      defaultLanguage="javascript"
       value={value}
       theme={theme}
       onChange={handleChange}
