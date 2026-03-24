@@ -10,10 +10,10 @@ import {
 import { useTheme } from '@/hooks/useTheme'
 
 const NAV_LINKS = [
-  { label: 'Machine Round', href: '#' },
-  { label: 'JS Problems', href: '#' },
-  { label: 'Jobs - Chennai', href: '#' },
-  { label: 'Learn React', href: '#' },
+  { label: 'Frontend Coding', href: '/frontend-coding' },
+  { label: 'JS Problems', href: '/js-problems' },
+  { label: 'Jobs - Chennai', href: '/jobs/chennai' },
+  { label: 'Learn React', href: 'https://react.learn.ingeniousclan.com/', target: '_blank' },
 ]
 
 export function Header() {
@@ -35,6 +35,8 @@ export function Header() {
             <a
               key={link.label}
               href={link.href}
+              target={link.target}
+              rel={link.target === '_blank' ? 'noreferrer' : undefined}
               className="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               {link.label}
@@ -50,7 +52,7 @@ export function Header() {
 
           <Button asChild size="sm" className="hidden md:inline-flex">
             <a
-              href="https://www.linkedin.com/company/ingenious-react"
+              href="https://www.linkedin.com/company/ingenious-react-jobs-chennai/"
               target="_blank"
               rel="noreferrer"
             >
@@ -77,6 +79,8 @@ export function Header() {
                   <a
                     key={link.label}
                     href={link.href}
+                    target={link.target}
+                    rel={link.target === '_blank' ? 'noreferrer' : undefined}
                     className="rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                   >
                     {link.label}
@@ -86,7 +90,7 @@ export function Header() {
               <div className="mt-6 px-2">
                 <Button asChild size="sm" className="w-full">
                   <a
-                    href="https://www.linkedin.com/company/ingenious-react"
+                    href="https://www.linkedin.com/company/ingenious-react-jobs-chennai/"
                     target="_blank"
                     rel="noreferrer"
                   >
