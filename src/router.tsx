@@ -7,11 +7,12 @@ import { Route as RootRoute } from './routes/__root'
 import { Route as IndexRoute } from './routes/index'
 import { Route as AboutRoute } from './routes/about'
 import { Route as FrontendCodingRoute } from './routes/frontend-coding'
+import { Route as FrontendCodingChallengeRoute } from './routes/frontend-coding.$challengeId'
 import { Route as JSProblemsRoute } from './routes/js-problems'
 import { Route as JobsChennaiRoute } from './routes/jobs.chennai'
 
 // Create the route tree
-const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, JSProblemsRoute, JobsChennaiRoute])
+const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, FrontendCodingChallengeRoute, JSProblemsRoute, JobsChennaiRoute])
 
 // Create the router
 const router = createRouter({
