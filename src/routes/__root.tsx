@@ -1,5 +1,4 @@
 import { Outlet, createRootRoute, HeadContent } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { Header } from '@/components/Header'
 import { SITE_NAME } from '@/lib/seo'
 
@@ -25,7 +24,6 @@ function RootLayout() {
         <main className="flex-1">
           <Outlet />
         </main>
-        <TanStackRouterDevtools />
       </div>
     </>
   )
