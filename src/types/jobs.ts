@@ -15,6 +15,7 @@ export interface Job {
   name: string
   companyName: string
   role?: string | null
+  employmentType?: string | null
   experience?: string | null
   location: string
   salary?: string | null

@@ -1,10 +1,11 @@
+import * as React from 'react'
 import { createRoute, Link } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
-import { MapPin, Briefcase, Banknote, ExternalLink, ArrowLeft, FileQuestion } from 'lucide-react'
+import { MapPin, Briefcase, Banknote, ExternalLink, ArrowLeft, FileQuestion, Building2, Clock, GraduationCap, Copy, Check } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { Route as RootRoute } from './__root'
 import { buildPageMeta } from '@/lib/seo'
-import { Button } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { fetchJob, jobKeys } from '@/lib/jobs-api'
 import type { Job } from '@/types/jobs'
 
@@ -49,6 +50,24 @@ function JobDetailPage() {
   return <JobDetail job={job} />
 }
 
+function getApplyHref(link: string) {
+  if (link.startsWith('mailto:')) return link
+  if (link.includes('@')) return `mailto:${link}`
+  return link
+}
+
+function handleApplyClick(e: React.MouseEvent<HTMLAnchorElement>, link: string) {
+  const href = getApplyHref(link)
+  if (href.startsWith('mailto:')) {
+    e.preventDefault()
+    const a = document.createElement('a')
+    a.href = href
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
+}
+
 function JobDetail({ job }: { job: Job }) {
   return (
     <div className="flex flex-col flex-1 p-6 max-w-3xl mx-auto w-full gap-6">
@@ -66,41 +85,33 @@ function JobDetail({ job }: { job: Job }) {
         <div className="flex items-start justify-between gap-4">
           <h1 className="text-2xl font-semibold">{job.name}</h1>
           {job.applyLink ? (
-            <a href={job.applyLink} target="_blank" rel="noopener noreferrer" className="shrink-0">
-              <Button size="sm" className="gap-1.5">
-                Apply <ExternalLink className="size-3" />
-              </Button>
+            <a
+              href={getApplyHref(job.applyLink)}
+              onClick={(e) => handleApplyClick(e, job.applyLink!)}
+              {...(!job.applyLink.includes('@') && !job.applyLink.startsWith('mailto:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className={buttonVariants({ size: 'sm', className: 'gap-1.5 shrink-0' })}
+            >
+              {job.applyLink.includes('@') || job.applyLink.startsWith('mailto:') ? 'Send Mail' : 'Apply'} <ExternalLink className="size-3" />
             </a>
           ) : null}
         </div>
 
         <p className="text-lg text-muted-foreground">{job.companyName}</p>
 
-        {/* Metadata */}
-        <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-muted-foreground">
-          <span className="flex items-center gap-1.5">
-            <MapPin className="size-4 shrink-0" />
-            {job.location}
-          </span>
-          {job.role && (
-            <span className="flex items-center gap-1.5">
-              <Briefcase className="size-4 shrink-0" />
-              {job.role}
-            </span>
-          )}
-          {job.experience && (
-            <span className="flex items-center gap-1.5">
-              <Briefcase className="size-4 shrink-0" />
-              {job.experience}
-            </span>
-          )}
-          {job.salary && (
-            <span className="flex items-center gap-1.5">
-              <Banknote className="size-4 shrink-0" />
-              {job.salary}
-            </span>
-          )}
-        </div>
+      </div>
+
+      {/* Structured info block */}
+      <div className="rounded-lg border border-border bg-muted/30 divide-y divide-border text-sm">
+        <InfoRow icon={<Building2 className="size-4" />} label="Company" value={job.companyName} />
+        <InfoRow icon={<Briefcase className="size-4" />} label="Role" value={job.name} />
+        <InfoRow icon={<Clock className="size-4" />} label="Employment Type" value={job.employmentType ?? 'Full Time'} />
+        {job.experience && (
+          <InfoRow icon={<GraduationCap className="size-4" />} label="Experience" value={job.experience} />
+        )}
+        {job.salary && (
+          <InfoRow icon={<Banknote className="size-4" />} label="Salary" value={`${job.salary} (Estimated)`} />
+        )}
+        <InfoRow icon={<MapPin className="size-4" />} label="Location" value={job.location} />
       </div>
 
       <hr className="border-border" />
@@ -112,14 +123,50 @@ function JobDetail({ job }: { job: Job }) {
 
       {/* Bottom apply */}
       {job.applyLink && (
-        <div className="pt-2">
-          <a href={job.applyLink} target="_blank" rel="noopener noreferrer">
-            <Button className="gap-1.5">
-              Apply for this role <ExternalLink className="size-4" />
-            </Button>
+        <div className="pt-2 flex flex-col gap-3">
+          <a
+            href={getApplyHref(job.applyLink)}
+            onClick={(e) => handleApplyClick(e, job.applyLink!)}
+            {...(!job.applyLink.includes('@') && !job.applyLink.startsWith('mailto:') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className={buttonVariants({ className: 'gap-1.5 w-fit' })}
+          >
+            {job.applyLink.includes('@') || job.applyLink.startsWith('mailto:') ? 'Send Mail' : 'Apply for this role'} <ExternalLink className="size-4" />
           </a>
+          {(job.applyLink.includes('@') || job.applyLink.startsWith('mailto:')) && (
+            <CopyEmail email={job.applyLink.replace('mailto:', '')} />
+          )}
         </div>
       )}
+    </div>
+  )
+}
+
+function CopyEmail({ email }: { email: string }) {
+  const [copied, setCopied] = React.useState(false)
+
+  function handleCopy() {
+    navigator.clipboard.writeText(email)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+      <span>{email}</span>
+      <button onClick={handleCopy} className="flex items-center gap-1 hover:text-foreground transition-colors">
+        {copied ? <Check className="size-3.5 text-green-500" /> : <Copy className="size-3.5" />}
+        <span>{copied ? 'Copied!' : 'Copy'}</span>
+      </button>
+    </div>
+  )
+}
+
+function InfoRow({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-3 px-4 py-3">
+      <span className="text-muted-foreground shrink-0">{icon}</span>
+      <span className="text-muted-foreground w-32 shrink-0">{label}</span>
+      <span className="font-medium">{value}</span>
     </div>
   )
 }
