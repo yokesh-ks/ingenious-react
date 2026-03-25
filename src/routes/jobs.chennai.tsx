@@ -1,7 +1,7 @@
 import { createRoute, Link } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { useState, useEffect } from 'react'
-import { MapPin, Briefcase, Banknote } from 'lucide-react'
+import { MapPin, Banknote } from 'lucide-react'
 import { Route as RootRoute } from './__root'
 import { buildPageMeta } from '@/lib/seo'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -93,10 +93,10 @@ function JobCard({ job }: { job: Job }) {
       <Card className="flex flex-col h-full group-hover:border-foreground/30 transition-colors">
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between gap-2">
-            <CardTitle className="text-base leading-snug">{job.name}</CardTitle>
-            {job.role && (
+            <CardTitle className="text-base leading-snug">{job.role}</CardTitle>
+            {job.experience && (
               <span className="shrink-0 text-xs font-medium px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
-                {job.role}
+                {job.experience}
               </span>
             )}
           </div>
@@ -109,12 +109,6 @@ function JobCard({ job }: { job: Job }) {
               <MapPin className="size-3" />
               {job.location}
             </span>
-            {job.experience && (
-              <span className="flex items-center gap-1">
-                <Briefcase className="size-3" />
-                {job.experience}
-              </span>
-            )}
             {job.salary && (
               <span className="flex items-center gap-1">
                 <Banknote className="size-3" />
