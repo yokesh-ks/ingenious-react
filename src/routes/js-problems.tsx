@@ -2,7 +2,8 @@ import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { jsProblems, type Difficulty, type JSProblemCategory } from '@/data/js-problems'
 import { useState, useMemo } from 'react'
-import { Search } from 'lucide-react'
+import { Search, SearchX } from 'lucide-react'
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta } from '@/lib/seo'
 import { JSProblemCard } from '@/components/cards/JSProblemCard'
 
@@ -127,9 +128,13 @@ function JSProblems() {
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <div className="flex flex-1 items-center justify-center text-muted-foreground">
-          No problems match your search.
-        </div>
+        <Empty>
+          <EmptyHeader>
+            <EmptyMedia variant="icon"><SearchX /></EmptyMedia>
+            <EmptyTitle>No problems found</EmptyTitle>
+            <EmptyDescription>No problems match your search.</EmptyDescription>
+          </EmptyHeader>
+        </Empty>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((problem) => (

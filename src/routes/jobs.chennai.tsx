@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react'
 import { Route as RootRoute } from './__root'
 import { buildPageMeta } from '@/lib/seo'
 import { Button } from '@/components/ui/button'
+import { ServerCrash } from 'lucide-react'
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } from '@/components/ui/empty'
 import { fetchJobs, jobKeys } from '@/lib/jobs-api'
 import type { Job } from '@/types/jobs'
 import { JobCard, JobCardSkeleton } from '@/components/cards/JobCard'
@@ -86,11 +88,17 @@ function JobsChennai() {
 
 function ErrorState({ onRetry }: { onRetry: () => void }) {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center gap-4 text-center py-16">
-      <p className="text-muted-foreground text-sm">Failed to load jobs. Please try again.</p>
-      <Button variant="outline" size="sm" onClick={onRetry}>
-        Retry
-      </Button>
-    </div>
+    <Empty className="flex-1">
+      <EmptyHeader>
+        <EmptyMedia variant="icon"><ServerCrash /></EmptyMedia>
+        <EmptyTitle>Failed to load jobs</EmptyTitle>
+        <EmptyDescription>Something went wrong. Please try again.</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent>
+        <Button variant="outline" size="sm" onClick={onRetry}>
+          Retry
+        </Button>
+      </EmptyContent>
+    </Empty>
   )
 }

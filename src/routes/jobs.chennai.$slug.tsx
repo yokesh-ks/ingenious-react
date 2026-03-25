@@ -1,6 +1,7 @@
 import { createRoute, Link } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
-import { MapPin, Briefcase, Banknote, ExternalLink, ArrowLeft } from 'lucide-react'
+import { MapPin, Briefcase, Banknote, ExternalLink, ArrowLeft, FileQuestion } from 'lucide-react'
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { Route as RootRoute } from './__root'
 import { buildPageMeta } from '@/lib/seo'
 import { Button } from '@/components/ui/button'
@@ -33,14 +34,15 @@ function JobDetailPage() {
 
   if (isError || job === null || job === undefined) {
     return (
-      <div className="flex flex-1 items-center justify-center p-8 text-center">
-        <div>
-          <h1 className="text-2xl font-semibold mb-2">Job not found</h1>
-          <Link to="/jobs/chennai" className="text-primary underline text-sm">
-            ← Back to Jobs
-          </Link>
-        </div>
-      </div>
+      <Empty className="flex-1">
+        <EmptyHeader>
+          <EmptyMedia variant="icon"><FileQuestion /></EmptyMedia>
+          <EmptyTitle>Job not found</EmptyTitle>
+          <EmptyDescription>
+            <Link to="/jobs/chennai">← Back to Jobs</Link>
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
     )
   }
 

@@ -6,7 +6,8 @@ import { runTests } from '@/utils/testRunner'
 import type { RunResult } from '@/utils/testRunner'
 import { CodeEditor } from '@/components/CodeEditor'
 import { useState } from 'react'
-import { CheckCircle2, XCircle, Loader2, Play, ChevronRight } from 'lucide-react'
+import { CheckCircle2, XCircle, Loader2, Play, ChevronRight, FileQuestion } from 'lucide-react'
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta, truncate } from '@/lib/seo'
 
 export const Route = createRoute({
@@ -41,14 +42,15 @@ function ProblemPage() {
 
   if (!problem) {
     return (
-      <div className="flex flex-1 items-center justify-center p-8 text-center">
-        <div>
-          <h1 className="text-2xl font-semibold mb-2">Problem not found</h1>
-          <Link to="/js-problems" className="text-primary underline">
-            Back to JS Problems
-          </Link>
-        </div>
-      </div>
+      <Empty className="flex-1">
+        <EmptyHeader>
+          <EmptyMedia variant="icon"><FileQuestion /></EmptyMedia>
+          <EmptyTitle>Problem not found</EmptyTitle>
+          <EmptyDescription>
+            <Link to="/js-problems">Back to JS Problems</Link>
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
     )
   }
 
@@ -247,18 +249,24 @@ function TestResultsPanel({
 }) {
   if (isRunning) {
     return (
-      <div className="flex items-center justify-center gap-2 p-6 text-sm text-muted-foreground">
-        <Loader2 className="w-4 h-4 animate-spin" />
-        Running tests...
-      </div>
+      <Empty>
+        <EmptyHeader>
+          <EmptyMedia><Loader2 className="w-5 h-5 animate-spin text-muted-foreground" /></EmptyMedia>
+          <EmptyTitle>Running tests…</EmptyTitle>
+        </EmptyHeader>
+      </Empty>
     )
   }
 
   if (!result) {
     return (
-      <div className="flex items-center justify-center p-6 text-sm text-muted-foreground">
-        Click Run Tests to execute your solution
-      </div>
+      <Empty>
+        <EmptyHeader>
+          <EmptyMedia variant="icon"><Play /></EmptyMedia>
+          <EmptyTitle>No results yet</EmptyTitle>
+          <EmptyDescription>Click Run Tests to execute your solution.</EmptyDescription>
+        </EmptyHeader>
+      </Empty>
     )
   }
 

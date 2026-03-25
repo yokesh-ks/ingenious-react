@@ -5,6 +5,8 @@ import { useWebContainer } from '@/hooks/useWebContainer'
 import { CodeEditor } from '@/components/CodeEditor'
 import { useState } from 'react'
 import { buildPageMeta, truncate } from '@/lib/seo'
+import { FileQuestion } from 'lucide-react'
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -43,14 +45,15 @@ function ChallengePage() {
 
   if (!challenge) {
     return (
-      <div className="flex flex-1 items-center justify-center p-8 text-center">
-        <div>
-          <h1 className="text-2xl font-semibold mb-2">Challenge not found</h1>
-          <Link to="/frontend-coding" className="text-primary underline">
-            Back to challenges
-          </Link>
-        </div>
-      </div>
+      <Empty className="flex-1">
+        <EmptyHeader>
+          <EmptyMedia variant="icon"><FileQuestion /></EmptyMedia>
+          <EmptyTitle>Challenge not found</EmptyTitle>
+          <EmptyDescription>
+            <Link to="/frontend-coding">Back to challenges</Link>
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
     )
   }
 

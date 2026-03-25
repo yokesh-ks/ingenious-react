@@ -2,7 +2,8 @@ import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { challenges, type Difficulty } from '@/data/challenges'
 import { useState, useMemo } from 'react'
-import { Search } from 'lucide-react'
+import { Search, SearchX } from 'lucide-react'
+import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta } from '@/lib/seo'
 import { FrontendChallengeCard } from '@/components/cards/FrontendChallengeCard'
 
@@ -83,9 +84,13 @@ function FrontendCoding() {
 
       {/* Grid */}
       {filtered.length === 0 ? (
-        <div className="flex flex-1 items-center justify-center text-muted-foreground">
-          No challenges match your search.
-        </div>
+        <Empty>
+          <EmptyHeader>
+            <EmptyMedia variant="icon"><SearchX /></EmptyMedia>
+            <EmptyTitle>No challenges found</EmptyTitle>
+            <EmptyDescription>No challenges match your search.</EmptyDescription>
+          </EmptyHeader>
+        </Empty>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((challenge) => (
