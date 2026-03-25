@@ -1,8 +1,9 @@
 import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Code2, BrainCircuit, MapPin, BookOpen, Zap } from 'lucide-react'
+import { Code2, BrainCircuit, MapPin, BookOpen, Zap, ArrowRight } from 'lucide-react'
 import { buildPageMeta } from '@/lib/seo'
+import { HomeFeatureCard } from '@/components/cards/HomeFeatureCard'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -86,23 +87,8 @@ function Home() {
       {/* Feature Cards */}
       <section className="mx-auto w-full max-w-6xl px-4 pb-24">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map(({ icon: Icon, title, description, href, external }) => (
-            <a
-              key={title}
-              href={href}
-              target={external ? '_blank' : undefined}
-              rel={external ? 'noreferrer' : undefined}
-              className="group flex flex-col gap-3 rounded-xl border border-border bg-card p-5 transition-all hover:border-primary/40 hover:shadow-md hover:shadow-primary/5"
-            >
-              <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary/20">
-                <Icon className="size-5" />
-              </div>
-              <div>
-                <p className="font-semibold text-foreground">{title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{description}</p>
-              </div>
-              <ArrowRight className="mt-auto size-4 text-muted-foreground/40 transition-all group-hover:translate-x-1 group-hover:text-primary" />
-            </a>
+          {FEATURES.map((feature) => (
+            <HomeFeatureCard key={feature.title} {...feature} />
           ))}
         </div>
       </section>
