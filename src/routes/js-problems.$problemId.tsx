@@ -6,9 +6,12 @@ import { runTests } from '@/utils/testRunner'
 import type { RunResult } from '@/utils/testRunner'
 import { CodeEditor } from '@/components/CodeEditor'
 import { useState } from 'react'
-import { CheckCircle2, XCircle, Loader2, Play, ChevronRight, FileQuestion } from 'lucide-react'
+import { CheckCircle2, XCircle, Loader2, Play, ChevronRight, FileQuestion, Save } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta, truncate } from '@/lib/seo'
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState, AppDispatch } from '@/store'
+import { setSolution, markCompleted, unmarkCompleted } from '@/store/slices/jsProblemsSlice'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -58,9 +61,32 @@ function ProblemPage() {
 }
 
 function ProblemEditor({ problem }: { problem: JSProblem }) {
-  const [code, setCode] = useState(problem.starterCode)
+  const dispatch = useDispatch<AppDispatch>()
+  const savedCode = useSelector((state: RootState) => state.jsProblems.solutions[problem.id])
+  const isCompleted = useSelector((state: RootState) => state.jsProblems.completed.includes(problem.id))
+
+  const [code, setCode] = useState(savedCode ?? problem.starterCode)
   const [runResult, setRunResult] = useState<RunResult | null>(null)
   const [isRunning, setIsRunning] = useState(false)
+  const [savedIndicator, setSavedIndicator] = useState(false)
+
+  const handleCodeChange = (newCode: string) => {
+    setCode(newCode)
+  }
+
+  const handleSave = () => {
+    dispatch(setSolution({ id: problem.id, code }))
+    setSavedIndicator(true)
+    setTimeout(() => setSavedIndicator(false), 2000)
+  }
+
+  const handleToggleComplete = () => {
+    if (isCompleted) {
+      dispatch(unmarkCompleted(problem.id))
+    } else {
+      dispatch(markCompleted(problem.id))
+    }
+  }
 
   const handleRun = async () => {
     setIsRunning(true)
@@ -85,10 +111,53 @@ function ProblemEditor({ problem }: { problem: JSProblem }) {
         <span className="text-muted-foreground">/</span>
         <h1 className="text-sm font-medium truncate">{problem.title}</h1>
         <span
-          className={`ml-auto text-xs font-medium px-2 py-0.5 rounded-full capitalize ${DIFFICULTY_STYLES[problem.difficulty]}`}
+          className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize ${DIFFICULTY_STYLES[problem.difficulty]}`}
         >
           {problem.difficulty}
         </span>
+        <div className="ml-auto flex items-center gap-2">
+          {runResult && !isRunning && (
+            <div className="flex items-center gap-2 text-xs">
+              <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                {runResult.passCount} passed
+              </span>
+              {runResult.failCount > 0 && (
+                <span className="flex items-center gap-1 text-red-600 dark:text-red-400 font-medium">
+                  <XCircle className="w-3.5 h-3.5" />
+                  {runResult.failCount} failed
+                </span>
+              )}
+              <span className="text-muted-foreground">{runResult.totalDurationMs}ms</span>
+            </div>
+          )}
+          <button
+            onClick={handleRun}
+            disabled={isRunning}
+            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+          >
+            {isRunning ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Play className="w-3.5 h-3.5" />}
+            {isRunning ? 'Running...' : 'Run Tests'}
+          </button>
+          <button
+            onClick={handleSave}
+            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md bg-muted text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Save className="w-3.5 h-3.5" />
+            {savedIndicator ? 'Saved!' : 'Save'}
+          </button>
+          <button
+            onClick={handleToggleComplete}
+            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md transition-colors ${
+              isCompleted
+                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                : 'bg-muted text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            {isCompleted ? 'Completed' : 'Mark as Complete'}
+          </button>
+        </div>
       </div>
 
       {/* 2-pane layout */}
@@ -194,44 +263,11 @@ function ProblemEditor({ problem }: { problem: JSProblem }) {
 
           {/* Monaco Editor */}
           <div className="flex-1 min-h-0 overflow-hidden">
-            <CodeEditor value={code} onChange={setCode} />
+            <CodeEditor value={code} onChange={handleCodeChange} />
           </div>
 
           {/* Results panel */}
           <div className="border-t shrink-0 flex flex-col" style={{ maxHeight: '40%' }}>
-            {/* Run button bar */}
-            <div className="flex items-center gap-3 px-4 py-2 border-b bg-muted/30 shrink-0">
-              <button
-                onClick={handleRun}
-                disabled={isRunning}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {isRunning ? (
-                  <Loader2 className="w-3 h-3 animate-spin" />
-                ) : (
-                  <Play className="w-3 h-3" />
-                )}
-                {isRunning ? 'Running...' : 'Run Tests'}
-              </button>
-
-              {runResult && !isRunning && (
-                <div className="flex items-center gap-2 text-xs">
-                  <span className="flex items-center gap-1 text-green-600 dark:text-green-400 font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    {runResult.passCount} passed
-                  </span>
-                  {runResult.failCount > 0 && (
-                    <span className="flex items-center gap-1 text-red-600 dark:text-red-400 font-medium">
-                      <XCircle className="w-3.5 h-3.5" />
-                      {runResult.failCount} failed
-                    </span>
-                  )}
-                  <span className="text-muted-foreground">{runResult.totalDurationMs}ms</span>
-                </div>
-              )}
-            </div>
-
-            {/* Results content */}
             <TestResultsPanel result={runResult} isRunning={isRunning} />
           </div>
         </div>

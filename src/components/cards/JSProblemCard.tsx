@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import type { JSProblem, Difficulty } from '@/data/js-problems'
+import { CheckCircle2 } from 'lucide-react'
 
 const DIFFICULTY_STYLES: Record<Difficulty, string> = {
   easy: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
@@ -10,24 +11,27 @@ const DIFFICULTY_STYLES: Record<Difficulty, string> = {
 
 const CATEGORY_STYLES = 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
 
-export function JSProblemCard({ problem }: { problem: JSProblem }) {
+export function JSProblemCard({ problem, isCompleted }: { problem: JSProblem; isCompleted?: boolean }) {
   return (
     <Link
       to="/js-problems/$problemId"
       params={{ problemId: problem.id }}
       className="block group"
     >
-      <Card className="h-full transition-shadow hover:shadow-md group-hover:border-primary/50">
+      <Card className={`h-full transition-shadow hover:shadow-md group-hover:border-primary/50 ${isCompleted ? 'border-green-500/50 dark:border-green-500/40' : ''}`}>
         <CardHeader className="pb-2">
           <div className="flex items-start justify-between gap-2">
             <CardTitle className="text-sm font-semibold leading-snug group-hover:text-primary transition-colors">
               {problem.title}
             </CardTitle>
-            <span
-              className={`shrink-0 text-xs font-medium px-2 py-0.5 rounded-full capitalize ${DIFFICULTY_STYLES[problem.difficulty]}`}
-            >
-              {problem.difficulty}
-            </span>
+            <div className="flex items-center gap-1.5 shrink-0">
+              {isCompleted && <CheckCircle2 className="w-4 h-4 text-green-500" />}
+              <span
+                className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize ${DIFFICULTY_STYLES[problem.difficulty]}`}
+              >
+                {problem.difficulty}
+              </span>
+            </div>
           </div>
         </CardHeader>
         <CardContent className="pt-0 space-y-3">

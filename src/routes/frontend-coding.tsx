@@ -6,6 +6,8 @@ import { Search, SearchX } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta } from '@/lib/seo'
 import { FrontendChallengeCard } from '@/components/cards/FrontendChallengeCard'
+import { useSelector } from 'react-redux'
+import type { RootState } from '@/store'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -29,6 +31,7 @@ type Filter = 'all' | Difficulty
 function FrontendCoding() {
   const [filter, setFilter] = useState<Filter>('all')
   const [query, setQuery] = useState('')
+  const completed = useSelector((state: RootState) => state.frontendChallenges.completed)
 
   const filtered = useMemo(() => {
     return challenges.filter((c) => {
@@ -94,7 +97,7 @@ function FrontendCoding() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((challenge) => (
-            <FrontendChallengeCard key={challenge.id} challenge={challenge} />
+            <FrontendChallengeCard key={challenge.id} challenge={challenge} isCompleted={completed.includes(challenge.id)} />
           ))}
         </div>
       )}

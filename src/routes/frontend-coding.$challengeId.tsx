@@ -5,8 +5,11 @@ import { useWebContainer } from '@/hooks/useWebContainer'
 import { CodeEditor } from '@/components/CodeEditor'
 import { useState } from 'react'
 import { buildPageMeta, truncate } from '@/lib/seo'
-import { FileQuestion } from 'lucide-react'
+import { FileQuestion, CheckCircle2, Save } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
+import { useDispatch, useSelector } from 'react-redux'
+import type { RootState, AppDispatch } from '@/store'
+import { setSolution, markCompleted, unmarkCompleted } from '@/store/slices/frontendChallengesSlice'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -61,12 +64,31 @@ function ChallengePage() {
 }
 
 function ChallengeEditor({ challenge }: { challenge: NonNullable<ReturnType<typeof challenges.find>> }) {
-  const [code, setCode] = useState(challenge.starterCode)
-  const { status, statusMessage, previewUrl, updateCode } = useWebContainer(challenge.starterCode)
+  const dispatch = useDispatch<AppDispatch>()
+  const savedCode = useSelector((state: RootState) => state.frontendChallenges.solutions[challenge.id])
+  const isCompleted = useSelector((state: RootState) => state.frontendChallenges.completed.includes(challenge.id))
+
+  const [code, setCode] = useState(savedCode ?? challenge.starterCode)
+  const [savedIndicator, setSavedIndicator] = useState(false)
+  const { status, statusMessage, previewUrl, updateCode } = useWebContainer(savedCode ?? challenge.starterCode)
 
   const handleCodeChange = (newCode: string) => {
     setCode(newCode)
     updateCode(newCode)
+  }
+
+  const handleSave = () => {
+    dispatch(setSolution({ id: challenge.id, code }))
+    setSavedIndicator(true)
+    setTimeout(() => setSavedIndicator(false), 2000)
+  }
+
+  const handleToggleComplete = () => {
+    if (isCompleted) {
+      dispatch(unmarkCompleted(challenge.id))
+    } else {
+      dispatch(markCompleted(challenge.id))
+    }
   }
 
   return (
@@ -82,10 +104,30 @@ function ChallengeEditor({ challenge }: { challenge: NonNullable<ReturnType<type
         <span className="text-muted-foreground">/</span>
         <h1 className="text-sm font-medium truncate">{challenge.title}</h1>
         <span
-          className={`ml-auto text-xs font-medium px-2 py-0.5 rounded-full capitalize ${DIFFICULTY_STYLES[challenge.difficulty]}`}
+          className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize ${DIFFICULTY_STYLES[challenge.difficulty]}`}
         >
           {challenge.difficulty}
         </span>
+        <div className="ml-auto flex items-center gap-2">
+          <button
+            onClick={handleSave}
+            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md bg-muted text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <Save className="w-3.5 h-3.5" />
+            {savedIndicator ? 'Saved!' : 'Save'}
+          </button>
+          <button
+            onClick={handleToggleComplete}
+            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full transition-colors ${
+              isCompleted
+                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200'
+                : 'bg-muted text-muted-foreground hover:text-foreground'
+            }`}
+          >
+            <CheckCircle2 className="w-3.5 h-3.5" />
+            {isCompleted ? 'Completed' : 'Mark Complete'}
+          </button>
+        </div>
       </div>
 
       {/* 3-pane layout */}

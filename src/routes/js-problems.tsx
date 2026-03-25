@@ -6,6 +6,8 @@ import { Search, SearchX } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta } from '@/lib/seo'
 import { JSProblemCard } from '@/components/cards/JSProblemCard'
+import { useSelector } from 'react-redux'
+import type { RootState } from '@/store'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
@@ -43,6 +45,7 @@ function JSProblems() {
   const [diffFilter, setDiffFilter] = useState<DiffFilter>('all')
   const [catFilter, setCatFilter] = useState<CatFilter>('all')
   const [query, setQuery] = useState('')
+  const completed = useSelector((state: RootState) => state.jsProblems.completed)
 
   const filtered = useMemo(() => {
     return jsProblems.filter((p) => {
@@ -138,7 +141,7 @@ function JSProblems() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((problem) => (
-            <JSProblemCard key={problem.id} problem={problem} />
+            <JSProblemCard key={problem.id} problem={problem} isCompleted={completed.includes(problem.id)} />
           ))}
         </div>
       )}
