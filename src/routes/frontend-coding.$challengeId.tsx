@@ -4,10 +4,23 @@ import { challenges } from '@/data/challenges'
 import { useWebContainer } from '@/hooks/useWebContainer'
 import { CodeEditor } from '@/components/CodeEditor'
 import { useState } from 'react'
+import { buildPageMeta, truncate } from '@/lib/seo'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
   path: '/frontend-coding/$challengeId',
+  head: ({ params }) => {
+    const challenge = challenges.find((c) => c.id === params.challengeId)
+    if (!challenge) {
+      return { meta: [{ title: 'Not Found | Ingenious React' }, { name: 'robots', content: 'noindex' }] }
+    }
+    const difficulty = challenge.difficulty.charAt(0).toUpperCase() + challenge.difficulty.slice(1)
+    return buildPageMeta({
+      title: `${challenge.title} – ${difficulty} React Challenge`,
+      description: truncate(challenge.description, 155),
+      path: `/frontend-coding/${challenge.id}`,
+    })
+  },
   component: ChallengePage,
 })
 

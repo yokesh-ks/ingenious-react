@@ -1,0 +1,38 @@
+{
+  "challengeIds": [
+    "build-a-birth-year-histogram", "build-a-calculator", "build-a-contact-form",
+    "build-a-countdown-timer", "build-a-counter", "build-a-data-table",
+    "build-a-debounced-search", "build-a-dice-roller", "build-a-digital-clock",
+    "build-a-drag-and-drop-list", "build-a-dropdown", "build-a-file-explorer",
+    "build-a-flight-booker", "build-a-form-with-validation", "build-a-generate-table",
+    "build-a-holy-grail-layout", "build-a-job-board", "build-a-kanban-board",
+    "build-a-like-button", "build-a-modal", "build-a-mortgage-calculator",
+    "build-a-navbar", "build-a-nested-comments", "build-a-pagination",
+    "build-a-password-generator", "build-a-popover", "build-a-progress-bar",
+    "build-a-quiz-app", "build-a-search-filter", "build-a-snake-and-ladder",
+    "build-a-star-rating", "build-a-stopwatch", "build-a-temperature-converter",
+    "build-a-theme-toggle", "build-a-tic-tac-toe", "build-a-todo-list",
+    "build-a-traffic-light", "build-a-transfer-list", "build-a-tweet",
+    "build-a-weather-app", "build-an-accordion", "build-an-analog-clock",
+    "build-an-autocomplete", "build-an-image-carousel", "build-an-infinite-scroll",
+    "build-an-otp-input", "build-connect-four", "build-grid-lights",
+    "build-nested-checkboxes", "build-selectable-cells", "build-a-tabs",
+    "build-use-throttle-hook", "build-wordle"
+  ],
+  "problemIds": [
+    "hello-world", "get-sum", "calculator", "count-occurrences", "find-max-number",
+    "title-case", "reverse-string", "palindrome-check", "fizzbuzz-array",
+    "count-vowels", "find-missing-number", "display-likes", "first-non-repeating-char",
+    "sum-of-even-squares", "highest-scoring-word", "valid-anagrams", "password-validator",
+    "fibonacci-sequence", "reverse-string-recursive", "flatten-array",
+    "word-frequency-counter", "two-sum", "anagram-grouping", "bubble-sort",
+    "merge-sort", "stack-implementation", "remove-duplicates", "array-intersection",
+    "format-phone-number", "calculate-total-sales", "hashtag-generator", "factorial",
+    "array-sum", "number-range", "symmetric-difference", "longest-consecutive",
+    "insertion-sort", "selection-sort", "quick-sort", "queue-implementation",
+    "find-missing-letter", "are-all-chars-unique", "validate-email", "valid-ipv4",
+    "analyze-car-mileage", "power", "permutations", "phone-number-directory",
+    "word-instance-counter", "find-pair-sum", "depth-first-traversal",
+    "breadth-first-traversal"
+  ]
+}

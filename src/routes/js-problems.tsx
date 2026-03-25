@@ -4,10 +4,16 @@ import { jsProblems, type Difficulty, type JSProblemCategory } from '@/data/js-p
 import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Search } from 'lucide-react'
+import { buildPageMeta } from '@/lib/seo'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
   path: '/js-problems',
+  head: () => buildPageMeta({
+    title: 'JavaScript Algorithm Problems',
+    description: 'Practice 50+ JavaScript algorithm problems covering arrays, strings, recursion, sorting, trees, and hash tables. Solve in the browser with automated test cases.',
+    path: '/js-problems',
+  }),
   component: JSProblems,
 })
 

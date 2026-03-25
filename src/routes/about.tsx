@@ -1,10 +1,17 @@
 import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { buildPageMeta } from '@/lib/seo'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
   path: '/about',
+  head: () => buildPageMeta({
+    title: 'About',
+    description: 'Ingenious React is a platform built with React 19, TanStack Router, and WebContainers to help developers practice coding challenges and land frontend jobs.',
+    path: '/about',
+    noindex: true,
+  }),
   component: About,
 })
 

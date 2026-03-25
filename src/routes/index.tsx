@@ -2,10 +2,16 @@ import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Code2, BrainCircuit, MapPin, BookOpen, Zap } from 'lucide-react'
+import { buildPageMeta } from '@/lib/seo'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
   path: '/',
+  head: () => buildPageMeta({
+    title: 'Master React. Land Your Dream Job.',
+    description: 'Practice React coding challenges, solve JS algorithm problems, and find frontend jobs in Chennai. Your all-in-one React practice platform.',
+    path: '/',
+  }),
   component: Home,
 })
 

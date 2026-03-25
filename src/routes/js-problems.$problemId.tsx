@@ -7,10 +7,23 @@ import type { RunResult } from '@/utils/testRunner'
 import { CodeEditor } from '@/components/CodeEditor'
 import { useState } from 'react'
 import { CheckCircle2, XCircle, Loader2, Play, ChevronRight } from 'lucide-react'
+import { buildPageMeta, truncate } from '@/lib/seo'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
   path: '/js-problems/$problemId',
+  head: ({ params }) => {
+    const problem = jsProblemMap.get(params.problemId)
+    if (!problem) {
+      return { meta: [{ title: 'Not Found | Ingenious React' }, { name: 'robots', content: 'noindex' }] }
+    }
+    const difficulty = problem.difficulty.charAt(0).toUpperCase() + problem.difficulty.slice(1)
+    return buildPageMeta({
+      title: `${problem.title} – ${difficulty} JS Problem`,
+      description: truncate(problem.description.split('\n')[0], 155),
+      path: `/js-problems/${problem.id}`,
+    })
+  },
   component: ProblemPage,
 })
 

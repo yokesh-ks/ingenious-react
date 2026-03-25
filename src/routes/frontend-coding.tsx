@@ -4,10 +4,16 @@ import { challenges, type Difficulty } from '@/data/challenges'
 import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Search } from 'lucide-react'
+import { buildPageMeta } from '@/lib/seo'
 
 export const Route = createRoute({
   getParentRoute: () => RootRoute,
   path: '/frontend-coding',
+  head: () => buildPageMeta({
+    title: 'Frontend Coding Challenges',
+    description: 'Browse 50+ hands-on React coding challenges — easy, medium, and hard. Build real components in your browser with live preview powered by WebContainers.',
+    path: '/frontend-coding',
+  }),
   component: FrontendCoding,
 })
 
