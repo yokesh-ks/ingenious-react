@@ -2,9 +2,9 @@ import { createRoute, Link } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { MapPin, Briefcase, Banknote, ExternalLink, ArrowLeft } from 'lucide-react'
 import { Route as RootRoute } from './__root'
-import { buildPageMeta, truncate } from '@/lib/seo'
+import { buildPageMeta } from '@/lib/seo'
 import { Button } from '@/components/ui/button'
-import { fetchJob, getJobPreview, jobKeys } from '@/lib/jobs-api'
+import { fetchJob, jobKeys } from '@/lib/jobs-api'
 import type { Job } from '@/types/jobs'
 
 export const Route = createRoute({
@@ -48,8 +48,6 @@ function JobDetailPage() {
 }
 
 function JobDetail({ job }: { job: Job }) {
-  const preview = getJobPreview(job.description, 155)
-
   return (
     <div className="flex flex-col flex-1 p-6 max-w-3xl mx-auto w-full gap-6">
       {/* Back link */}
