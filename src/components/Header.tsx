@@ -12,6 +12,7 @@ import { useTheme } from '@/hooks/useTheme'
 const NAV_LINKS = [
   { label: 'Frontend Coding', href: '/frontend-coding' },
   { label: 'JS Problems', href: '/js-problems' },
+  { label: 'Quiz Play', href: '/quiz' },
   { label: 'Jobs - Chennai', href: '/jobs/chennai' },
   { label: 'Learn React', href: 'https://react.learn.ingeniousclan.com/', target: '_blank' },
 ]

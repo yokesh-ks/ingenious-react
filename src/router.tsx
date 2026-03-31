@@ -15,9 +15,11 @@ import { Route as JSProblemsRoute } from './routes/js-problems'
 import { Route as JSProblemDetailRoute } from './routes/js-problems.$problemId'
 import { Route as JobsChennaiRoute } from './routes/jobs.chennai'
 import { Route as JobsChennaiDetailRoute } from './routes/jobs.chennai.$slug'
+import { Route as QuizRoute } from './routes/quiz'
+import { Route as QuizPlayRoute } from './routes/quiz.$quizId'
 
 // Create the route tree
-const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, FrontendCodingChallengeRoute, JSProblemsRoute, JSProblemDetailRoute, JobsChennaiRoute, JobsChennaiDetailRoute])
+const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, FrontendCodingChallengeRoute, JSProblemsRoute, JSProblemDetailRoute, JobsChennaiRoute, JobsChennaiDetailRoute, QuizRoute, QuizPlayRoute])
 
 // Create the router
 const router = createRouter({

@@ -8,16 +8,18 @@ const storage = {
 }
 import frontendChallengesReducer from './slices/frontendChallengesSlice'
 import jsProblemsReducer from './slices/jsProblemsSlice'
+import quizReducer from './slices/quizSlice'
 
 const rootReducer = combineReducers({
   frontendChallenges: frontendChallengesReducer,
   jsProblems: jsProblemsReducer,
+  quiz: quizReducer,
 })
 
 const persistConfig = {
   key: 'ingenious',
   storage,
-  whitelist: ['frontendChallenges', 'jsProblems'],
+  whitelist: ['frontendChallenges', 'jsProblems', 'quiz'],
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
