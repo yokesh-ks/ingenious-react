@@ -2,6 +2,10 @@ import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { buildPageMeta } from '@/lib/seo'
 import { namasteJSVideos } from '@/data/namaste-js-videos'
+import { codevolutionReactVideos } from '@/data/codevolution-react-videos'
+import { codevolutionTypeScriptVideos } from '@/data/codevolution-typescript'
+import { striverDSAVideos } from '@/data/striver-dsa'
+import { kevinPowellCssVideos } from '@/data/kevin-powell-css'
 import { ArrowRight, ListVideo } from 'lucide-react'
 
 export const Route = createRoute({
@@ -25,6 +29,46 @@ const VIDEO_SERIES = [
     description: 'Deep dive into JavaScript internals — execution context, closures, promises, async/await, and more.',
     count: namasteJSVideos.length,
     seasons: 2,
+  },
+  {
+    href: '/videos/codevolution-react',
+    thumbnail: `https://img.youtube.com/vi/QFaFIcGhPoM/mqdefault.jpg`,
+    thumbnailVideoId: 'QFaFIcGhPoM',
+    title: 'React by Codevolution',
+    author: 'Codevolution',
+    description: 'Complete React guide — components, hooks, rendering, and performance optimization.',
+    count: codevolutionReactVideos.length,
+    seasons: null,
+  },
+  {
+    href: '/videos/codevolution-typescript',
+    thumbnail: `https://img.youtube.com/vi/TiSGujM22OI/mqdefault.jpg`,
+    thumbnailVideoId: 'TiSGujM22OI',
+    title: 'React TypeScript by Codevolution',
+    author: 'Codevolution',
+    description: 'Type-safe React development — typing props, hooks, context, and polymorphic components.',
+    count: codevolutionTypeScriptVideos.length,
+    seasons: null,
+  },
+  {
+    href: '/videos/striver-dsa',
+    thumbnail: `https://img.youtube.com/vi/0bHoB32fuj0/mqdefault.jpg`,
+    thumbnailVideoId: '0bHoB32fuj0',
+    title: "Striver's A2Z DSA Course",
+    author: 'Striver',
+    description: 'Complete DSA course — arrays, linked lists, trees, graphs, DP, and interview preparation.',
+    count: striverDSAVideos.length,
+    seasons: null,
+  },
+  {
+    href: '/videos/kevin-powell-css',
+    thumbnail: `https://img.youtube.com/vi/0ohtVzCSHqs/mqdefault.jpg`,
+    thumbnailVideoId: '0ohtVzCSHqs',
+    title: 'Kevin Powell CSS',
+    author: 'Kevin Powell',
+    description: 'Modern CSS tutorials — responsive design, Grid, Flexbox, and layout techniques.',
+    count: kevinPowellCssVideos.length,
+    seasons: null,
   },
 ]
 
@@ -56,7 +100,7 @@ function Videos() {
               />
               <div className="absolute bottom-2 left-2 flex items-center gap-1.5 px-2 py-1 rounded-full bg-black/60 text-white text-xs font-medium">
                 <ListVideo className="w-3 h-3" />
-                {series.count} videos · {series.seasons} seasons
+                {series.count} videos{series.seasons ? ` · ${series.seasons} seasons` : ''}
               </div>
             </div>
 
