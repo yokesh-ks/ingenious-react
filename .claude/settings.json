@@ -3,7 +3,10 @@
     "allow": [
       "Bash(node -e \"const m = require\\(''d:/yokesh-ks/ingenious-react/node_modules/lucide-react''\\); console.log\\(Object.keys\\(m\\).filter\\(k => k.toLowerCase\\(\\).includes\\(''you''\\) || k.toLowerCase\\(\\).includes\\(''play''\\) || k.toLowerCase\\(\\).includes\\(''video''\\) || k.toLowerCase\\(\\).includes\\(''tube''\\)\\)\\)\")",
       "Bash(node -e \"const p = require\\(''d:/yokesh-ks/ingenious-react/node_modules/coi-serviceworker/package.json''\\); console.log\\(p.version\\)\")",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(grep -r \"container\" d:/yokesh-ks/ingenious-react/tailwind.config*)",
+      "Bash(cat d:/yokesh-ks/ingenious-react/tailwind.config*)",
+      "Bash(ls d:/yokesh-ks/ingenious-react/*.config* d:/yokesh-ks/ingenious-react/tailwind*)"
     ]
   }
 }

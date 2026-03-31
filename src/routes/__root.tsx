@@ -1,5 +1,6 @@
 import { Outlet, createRootRoute, HeadContent } from '@tanstack/react-router'
 import { Header } from '@/components/Header'
+import { SiteFooter } from '@/components/SiteFooter'
 import { SITE_NAME } from '@/lib/seo'
 
 export const Route = createRootRoute({
@@ -19,11 +20,12 @@ function RootLayout() {
   return (
     <>
       <HeadContent />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background flex flex-col">
         <Header />
         <main className="flex-1">
           <Outlet />
         </main>
+        <SiteFooter />
       </div>
     </>
   )
