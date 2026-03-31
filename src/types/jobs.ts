@@ -1,40 +1,33 @@
-interface LexicalTextNode {
-  type: 'text'
-  text: string
-}
-
-interface LexicalElementNode {
-  type: string
-  children?: LexicalNode[]
-}
-
-type LexicalNode = LexicalTextNode | LexicalElementNode
-
-export interface Job {
+export interface Post {
   id: string
-  name: string
-  companyName: string
-  role?: string | null
-  employmentType?: string | null
-  experience?: string | null
-  location: string
-  salary?: string | null
-  description: { root: { children: LexicalNode[] } }
-  slug: string
-  applyLink?: string | null
-  updatedAt: string
-  createdAt: string
-  _status?: 'draft' | 'published' | null
+  title: string
+  published: string
+  updated: string
+  url: string
+  content: string
+  selfLink: string
+  author: {
+    id: string
+    displayName: string
+    url: string
+    image: { url: string }
+  }
+  replies: { totalItems: string; selfLink: string }
+  labels?: string[]
+  images?: { url: string }[]
 }
 
-export interface JobsResponse {
-  docs: Job[]
-  totalDocs: number
-  limit: number
-  totalPages: number
-  page: number
-  hasPrevPage: boolean
-  hasNextPage: boolean
-  prevPage: number | null
-  nextPage: number | null
+export interface PostsApiResponse {
+  success: boolean
+  data: Post[]
+  meta: {
+    nextPageToken: string | null
+    prevPageToken: string | null
+  }
+}
+
+export interface PostApiResponse {
+  success: boolean
+  data: Post
+  error?: string
 }

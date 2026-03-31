@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { ServerCrash } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyContent } from '@/components/ui/empty'
 import { fetchJobs, jobKeys } from '@/lib/jobs-api'
-import type { Job } from '@/types/jobs'
+import type { Post } from '@/types/jobs'
 import { JobCard, JobCardSkeleton } from '@/components/cards/JobCard'
 
 export const Route = createRoute({
@@ -24,20 +24,22 @@ export const Route = createRoute({
 })
 
 function JobsChennai() {
-  const [page, setPage] = useState(1)
-  const [allJobs, setAllJobs] = useState<Job[]>([])
+  const [pageToken, setPageToken] = useState<string | null>(null)
+  const [allJobs, setAllJobs] = useState<Post[]>([])
+  const [nextPageToken, setNextPageToken] = useState<string | null>(null)
 
   const { data, isLoading, isFetching, isError, refetch } = useQuery({
-    queryKey: jobKeys.list(page),
-    queryFn: () => fetchJobs(page),
+    queryKey: jobKeys.list(pageToken),
+    queryFn: () => fetchJobs(pageToken),
     retry: false,
   })
 
   useEffect(() => {
-    if (data?.docs) {
-      setAllJobs((prev) => (page === 1 ? data.docs : [...prev, ...data.docs]))
+    if (data?.success && data.data) {
+      setAllJobs((prev) => (!pageToken ? data.data : [...prev, ...data.data]))
+      setNextPageToken(data.meta?.nextPageToken ?? null)
     }
-  }, [data, page])
+  }, [data, pageToken])
 
   const isInitialLoading = isLoading && allJobs.length === 0
 
@@ -46,7 +48,6 @@ function JobsChennai() {
       <div>
         <h1 className="text-2xl font-semibold">Jobs — Chennai</h1>
         <p className="text-muted-foreground text-sm mt-1">
-          {data?.totalDocs ? `${data.totalDocs} openings · ` : ''}
           React &amp; Frontend roles in Chennai
         </p>
       </div>
@@ -54,7 +55,7 @@ function JobsChennai() {
       {isError && allJobs.length === 0 ? (
         <ErrorState
           onRetry={() => {
-            setPage(1)
+            setPageToken(null)
             refetch()
           }}
         />
@@ -69,11 +70,11 @@ function JobsChennai() {
               Array.from({ length: 3 }).map((_, i) => <JobCardSkeleton key={`more-${i}`} />)}
           </div>
 
-          {data?.hasNextPage && (
+          {nextPageToken && (
             <div className="flex justify-center pt-2">
               <Button
                 variant="outline"
-                onClick={() => setPage((p) => p + 1)}
+                onClick={() => setPageToken(nextPageToken)}
                 disabled={isFetching}
               >
                 {isFetching ? 'Loading…' : 'Load More'}
