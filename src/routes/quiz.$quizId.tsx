@@ -58,8 +58,7 @@ function formatTime(seconds: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
 }
 
-function TimerDisplay({ timeLeft, totalSeconds }: { timeLeft: number; totalSeconds: number }) {
-  const ratio = timeLeft / totalSeconds
+function TimerDisplay({ timeLeft }: { timeLeft: number }) {
   const isRed = timeLeft < 120
   const isYellow = !isRed && timeLeft < 300
 
@@ -92,7 +91,6 @@ function TopNavBar({
   onExit: () => void
   onGoToQuestion: (n: number) => void
 }) {
-  const totalSeconds = quiz.questions.length * 36
   const currentQ = quiz.current
   const total = quiz.questions.length
   const [reviewOpen, setReviewOpen] = useState(false)
@@ -183,7 +181,7 @@ function TopNavBar({
       </div>
 
       {/* Timer */}
-      <TimerDisplay timeLeft={quiz.timeLeft} totalSeconds={totalSeconds} />
+      <TimerDisplay timeLeft={quiz.timeLeft} />
 
       {/* Pause */}
       <button
