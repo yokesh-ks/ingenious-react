@@ -1,7 +1,7 @@
 import { createRoute } from '@tanstack/react-router'
 import { Route as RootRoute } from './__root'
 import { Button } from '@/components/ui/button'
-import { Code2, BrainCircuit, MapPin, BookOpen, Zap, ArrowRight } from 'lucide-react'
+import { Code2, BrainCircuit, MapPin, BookOpen, Zap, ArrowRight, ListVideo } from 'lucide-react'
 import { buildPageMeta } from '@/lib/seo'
 import { HomeFeatureCard } from '@/components/cards/HomeFeatureCard'
 
@@ -34,6 +34,12 @@ const FEATURES = [
     title: 'Jobs in Chennai',
     description: 'Browse the latest React & frontend job openings in Chennai.',
     href: '/jobs/chennai',
+  },
+  {
+    icon: ListVideo,
+    title: 'Namaste JavaScript',
+    description: 'Watch Akshay Saini\'s full Namaste JS series — 26 episodes on core JS concepts.',
+    href: '/videos',
   },
   {
     icon: BookOpen,

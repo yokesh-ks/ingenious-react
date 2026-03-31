@@ -12,7 +12,16 @@ function coiServiceworkerPlugin(): Plugin {
     buildStart() {
       const src = path.resolve(__dirname, 'node_modules/coi-serviceworker/coi-serviceworker.min.js')
       const dest = path.resolve(__dirname, 'public/coi-serviceworker.js')
-      fs.copyFileSync(src, dest)
+      let content = fs.readFileSync(src, 'utf-8')
+      // Skip cross-origin navigate requests (e.g. iframes to YouTube) so the
+      // browser handles them directly instead of routing through the SW fetch.
+      // Only intercept same-origin requests — cross-origin resources (YouTube iframes,
+      // analytics, CDNs) must be left alone so the browser handles them natively.
+      content = content.replace(
+        'if("only-if-cached"===r.cache&&"same-origin"!==r.mode)return;',
+        'if(!r.url.startsWith(self.location.origin))return;if("only-if-cached"===r.cache&&"same-origin"!==r.mode)return;',
+      )
+      fs.writeFileSync(dest, content, 'utf-8')
     },
   }
 }
@@ -72,7 +81,7 @@ export default defineConfig({
   },
   server: {
     headers: {
-      'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Embedder-Policy': 'credentialless',
       'Cross-Origin-Opener-Policy': 'same-origin',
     },
   },

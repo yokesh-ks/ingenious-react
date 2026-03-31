@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { label: 'JS Problems', href: '/js-problems' },
   { label: 'Quiz Play', href: '/quiz' },
   { label: 'Jobs - Chennai', href: '/jobs/chennai' },
+  { label: 'Videos', href: '/videos' },
   { label: 'Learn React', href: 'https://react.learn.ingeniousclan.com/', target: '_blank' },
 ]
 
