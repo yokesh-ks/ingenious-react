@@ -25,10 +25,30 @@ import { Route as StriverDSAVideosRoute } from './routes/videos.striver-dsa'
 import { Route as KevinPowellCssVideosRoute } from './routes/videos.kevin-powell-css'
 import { Route as QuestionsHubRoute } from './routes/questions'
 import { Route as QuestionsReactRoute } from './routes/questions.react'
+import { Route as QuestionsReactIndexRoute } from './routes/questions.react.index'
 import { Route as QuestionDetailRoute } from './routes/questions.react.$questionId'
 
 // Create the route tree
-const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, FrontendCodingChallengeRoute, JSProblemsRoute, JSProblemDetailRoute, JobsChennaiRoute, JobsChennaiDetailRoute, QuizRoute, QuizPlayRoute, VideosRoute, NamasteJSVideosRoute, CodevolutionReactVideosRoute, CodevolutionTypeScriptVideosRoute, StriverDSAVideosRoute, KevinPowellCssVideosRoute, QuestionsHubRoute, QuestionsReactRoute, QuestionDetailRoute])
+const routeTree = RootRoute.addChildren([
+  IndexRoute,
+  AboutRoute,
+  FrontendCodingRoute,
+  FrontendCodingChallengeRoute,
+  JSProblemsRoute,
+  JSProblemDetailRoute,
+  JobsChennaiRoute,
+  JobsChennaiDetailRoute,
+  QuizRoute,
+  QuizPlayRoute,
+  VideosRoute,
+  NamasteJSVideosRoute,
+  CodevolutionReactVideosRoute,
+  CodevolutionTypeScriptVideosRoute,
+  StriverDSAVideosRoute,
+  KevinPowellCssVideosRoute,
+  QuestionsHubRoute,
+  QuestionsReactRoute.addChildren([QuestionsReactIndexRoute, QuestionDetailRoute]),
+])
 
 // Create the router
 const router = createRouter({

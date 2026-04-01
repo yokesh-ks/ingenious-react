@@ -1,15 +1,14 @@
- import { createRoute, Link } from '@tanstack/react-router'
-import { Route as RootRoute } from './__root'
+import { createRoute, Link } from '@tanstack/react-router'
+import { Route as ParentRoute } from './questions.react'
 import { questionMap } from '@/data/react-questions'
 import type { ReactQuestion } from '@/data/react-questions'
 import { useState } from 'react'
 import {
-  ChevronLeft,
-  ChevronRight,
   Bookmark,
   BookmarkCheck,
   Share2,
   ArrowUp,
+  ChevronRight,
 } from 'lucide-react'
 import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription } from '@/components/ui/empty'
 import { buildPageMeta, truncate } from '@/lib/seo'
@@ -20,8 +19,8 @@ import type { RootState, AppDispatch } from '@/store'
 import { toggleBookmark, isQuestionBookmarked } from '@/store/slices/questionsSlice'
 
 export const Route = createRoute({
-  getParentRoute: () => RootRoute,
-  path: '/questions/react/$questionId',
+  getParentRoute: () => ParentRoute,
+  path: '/$questionId',
   head: ({ params }) => {
     const question = questionMap.get(params.questionId)
     if (!question) {
@@ -30,7 +29,7 @@ export const Route = createRoute({
     return buildPageMeta({
       title: `Q${question.number}: ${question.title} – React Interview Question`,
       description: truncate(question.content.split('\n').find((l) => l.trim() && !l.startsWith('#') && !l.startsWith('|')) || '', 155),
-      path: `/questions/${question.id}`,
+      path: `/questions/react/${question.id}`,
     })
   },
   component: QuestionPage,
@@ -44,7 +43,7 @@ function QuestionPage() {
 
   if (!question) {
     return (
-      <Empty className="flex-1">
+      <Empty className="flex-1 flex items-center justify-center">
         <EmptyHeader>
           <EmptyMedia variant="icon">
             <ChevronRight className="rotate-90" />
@@ -84,7 +83,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
-      // Fallback for older browsers
       navigator.clipboard.writeText(url)
     }
   }
@@ -97,44 +95,43 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
   const sourceMatch = question.content.match(/\*Source:\s*\[([^\]]+)\]\(([^)]+)\)\*/)
   const sourceLink = sourceMatch ? { name: sourceMatch[1], url: sourceMatch[2] } : null
 
-  // Remove the source line from content for rendering
-  const contentToRender = sourceLink
-    ? question.content.replace(/\*Source:\s*\[([^\]]+)\]\(([^)]+)\)\*/, '').trim()
-    : question.content
+  // Remove the title, metadata table, and source line from content for rendering
+  let contentToRender = question.content
+    // Remove the main title (e.g., "# Q1: What is React...")
+    .replace(/^# Q\d+:\s*.+$/m, '')
+    // Remove the metadata table (Category and Difficulty)
+    .replace(/\|\s*\|\s*\|\s*\n\|---\|---\|\n\|\s*\*\*Category\*\*\s*\|.*\n\|\s*\*\*Difficulty\*\*\s*\|.*/, '')
+    // Remove the source line
+    .replace(/\*Source:\s*\[([^\]]+)\]\(([^)]+)\)\*/, '')
+    .trim()
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-57px)]">
+    <div className="flex flex-col min-h-full">
       {/* Top bar */}
-      <div className="flex items-center gap-3 px-4 py-2 border-b bg-background shrink-0 sticky top-[57px] z-10">
-        <Link
-          to="/questions/react"
-          className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1"
-        >
-          <ChevronLeft className="w-4 h-4" />
-          Questions
-        </Link>
-        <span className="text-muted-foreground">/</span>
-        <h1 className="text-sm font-medium truncate">Q{question.number}: {question.title}</h1>
-        <span
-          className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize shrink-0 ${DIFFICULTY_STYLES[question.difficulty]}`}
-        >
-          {DIFFICULTY_EMOJIS[question.difficulty]} {DIFFICULTY_LABELS[question.difficulty]}
-        </span>
-        <div className="ml-auto flex items-center gap-2">
+      <div className="flex items-center gap-3 px-4 py-3 border-b bg-background shrink-0 sticky top-0 z-10">
+        <div className="flex items-center gap-2 flex-1 min-w-0">
+          <span
+            className={`text-xs font-medium px-2 py-0.5 rounded-full capitalize shrink-0 ${DIFFICULTY_STYLES[question.difficulty]}`}
+          >
+            {DIFFICULTY_EMOJIS[question.difficulty]} {DIFFICULTY_LABELS[question.difficulty]}
+          </span>
+          <span className="text-muted-foreground shrink-0">·</span>
+          <h1 className="text-sm font-medium truncate">{question.title}</h1>
+        </div>
+        <div className="flex items-center gap-2 shrink-0">
           <button
             onClick={handleBookmark}
-            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md transition-colors ${
+            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-md transition-colors ${
               bookmarked
                 ? 'bg-primary/10 text-primary'
                 : 'bg-muted text-muted-foreground hover:text-foreground'
             }`}
           >
             {bookmarked ? <BookmarkCheck className="w-3.5 h-3.5" /> : <Bookmark className="w-3.5 h-3.5" />}
-            {bookmarked ? 'Bookmarked' : 'Bookmark'}
           </button>
           <button
             onClick={handleShare}
-            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-md bg-muted text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-1.5 text-xs font-medium px-2.5 py-1.5 rounded-md bg-muted text-muted-foreground hover:text-foreground transition-colors"
           >
             <Share2 className="w-3.5 h-3.5" />
             {copied ? 'Copied!' : 'Share'}
@@ -143,11 +140,11 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 max-w-4xl mx-auto w-full p-6">
+      <div className="flex-1 max-w-4xl mx-auto w-full p-6 pb-12">
         {/* Header */}
         <div className="mb-6 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-muted-foreground text-sm">Q{question.number}</span>
+            <span className="text-muted-foreground text-sm font-medium">Q{question.number}</span>
             <span className="text-muted-foreground">·</span>
             <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${CATEGORY_STYLES}`}>
               {question.category}
@@ -160,7 +157,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
         <article className="prose prose-slate dark:prose-invert max-w-none">
           <ReactMarkdown
             components={{
-              // Custom styling for code blocks
               code({ className, children, ...props }) {
                 const isBlock = className?.includes('language-')
                 if (isBlock) {
@@ -178,7 +174,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
                   </code>
                 )
               },
-              // Custom styling for tables
               table({ children, ...props }) {
                 return (
                   <div className="overflow-x-auto my-4">
@@ -202,7 +197,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
                   </td>
                 )
               },
-              // Custom styling for blockquotes
               blockquote({ children, ...props }) {
                 return (
                   <blockquote {...props} className="border-l-4 border-primary pl-4 py-2 my-4 text-muted-foreground italic">
@@ -210,7 +204,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
                   </blockquote>
                 )
               },
-              // Custom styling for headings
               h1({ children, ...props }) {
                 return <h1 {...props} className="text-2xl font-semibold mt-8 mb-4">{children}</h1>
               },
@@ -220,7 +213,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
               h3({ children, ...props }) {
                 return <h3 {...props} className="text-lg font-semibold mt-4 mb-2">{children}</h3>
               },
-              // Custom styling for lists
               ul({ children, ...props }) {
                 return <ul {...props} className="list-disc list-inside space-y-1 my-3">{children}</ul>
               },
@@ -230,15 +222,12 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
               li({ children, ...props }) {
                 return <li {...props} className="pl-1">{children}</li>
               },
-              // Custom styling for paragraphs
               p({ children, ...props }) {
                 return <p {...props} className="leading-relaxed my-3">{children}</p>
               },
-              // Custom styling for horizontal rules
               hr() {
                 return <hr className="my-6 border-border" />
               },
-              // Custom styling for links
               a({ children, ...props }) {
                 return (
                   <a {...props} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
@@ -280,7 +269,7 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
               <ArrowUp className="w-4 h-4 rotate-[-90deg] shrink-0" />
               <div className="text-left">
                 <p className="text-xs text-muted-foreground group-hover:text-foreground">Previous</p>
-                <p className="font-medium line-clamp-1">Q{prevQuestion.number}: {prevQuestion.title}</p>
+                <p className="font-medium line-clamp-1 max-w-[200px]">Q{prevQuestion.number}: {prevQuestion.title}</p>
               </div>
             </Link>
           ) : (
@@ -294,7 +283,7 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
             >
               <div className="text-right">
                 <p className="text-xs text-muted-foreground group-hover:text-foreground">Next</p>
-                <p className="font-medium line-clamp-1">Q{nextQuestion.number}: {nextQuestion.title}</p>
+                <p className="font-medium line-clamp-1 max-w-[200px]">Q{nextQuestion.number}: {nextQuestion.title}</p>
               </div>
               <ArrowUp className="w-4 h-4 rotate-90 shrink-0" />
             </Link>
