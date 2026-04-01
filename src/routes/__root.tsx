@@ -1,5 +1,6 @@
 import { Outlet, createRootRoute, HeadContent } from '@tanstack/react-router'
 import { Header } from '@/components/Header'
+import { CommunitySection } from '@/components/CommunitySection'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SITE_NAME } from '@/lib/seo'
 
@@ -25,6 +26,7 @@ function RootLayout() {
         <main className="flex-1">
           <Outlet />
         </main>
+        <CommunitySection />
         <SiteFooter />
       </div>
     </>

@@ -53,16 +53,6 @@ export function Header() {
             {theme === 'dark' ? <Sun className="size-4" /> : <Moon className="size-4" />}
           </Button>
 
-          <Button asChild size="sm" className="hidden md:inline-flex">
-            <a
-              href="https://www.linkedin.com/company/ingenious-react-jobs-chennai/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Follow
-            </a>
-          </Button>
-
           {/* Mobile Menu Trigger */}
           <Sheet>
             <SheetTrigger asChild>
@@ -90,17 +80,6 @@ export function Header() {
                   </a>
                 ))}
               </nav>
-              <div className="mt-6 px-2">
-                <Button asChild size="sm" className="w-full">
-                  <a
-                    href="https://www.linkedin.com/company/ingenious-react-jobs-chennai/"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Follow on LinkedIn
-                  </a>
-                </Button>
-              </div>
             </SheetContent>
           </Sheet>
         </div>
