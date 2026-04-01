@@ -6,7 +6,12 @@ import { execSync } from "child_process";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_DIR = join(__dirname, "../contents/interview/react");
 
-const API_KEY = "AIzaSyCe0mNniEjdZ7uU3i2A_81eeb4Hbm4fnwg";
+const API_KEY = process.env.GOOGLE_API_KEY;
+if (!API_KEY) {
+  console.error("Error: GOOGLE_API_KEY environment variable is not set.");
+  console.error("Please set the GOOGLE_API_KEY environment variable before running this script.");
+  process.exit(1);
+}
 const BASE_URL = `https://firestore.googleapis.com/v1/projects/dev-stack-app/databases/(default)/documents/data/answers/react`;
 
 const TOTAL_QUESTIONS = 100;

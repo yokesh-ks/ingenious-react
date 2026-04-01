@@ -9,7 +9,6 @@
       "Bash(ls d:/yokesh-ks/ingenious-react/*.config* d:/yokesh-ks/ingenious-react/tailwind*)",
       "WebFetch(domain:devinterview.io)",
       "Bash(node scripts/fetch-react-questions.mjs)",
-      "Bash(curl -s \"https://firestore.googleapis.com/v1/projects/dev-stack-app/databases/\\(default\\)/documents/data/answers/react/react1?key=AIzaSyCe0mNniEjdZ7uU3i2A_81eeb4Hbm4fnwg\" -H \"Referer: https://devinterview.io/\")",
       "Bash(node scripts/generate-react-answers.mjs)"
     ]
   }
