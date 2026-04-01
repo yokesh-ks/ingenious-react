@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { createRoute, Link } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
 import { ArrowLeft, FileQuestion } from 'lucide-react'
