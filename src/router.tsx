@@ -23,9 +23,12 @@ import { Route as CodevolutionReactVideosRoute } from './routes/videos.codevolut
 import { Route as CodevolutionTypeScriptVideosRoute } from './routes/videos.codevolution-typescript'
 import { Route as StriverDSAVideosRoute } from './routes/videos.striver-dsa'
 import { Route as KevinPowellCssVideosRoute } from './routes/videos.kevin-powell-css'
+import { Route as QuestionsHubRoute } from './routes/questions'
+import { Route as QuestionsReactRoute } from './routes/questions.react'
+import { Route as QuestionDetailRoute } from './routes/questions.react.$questionId'
 
 // Create the route tree
-const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, FrontendCodingChallengeRoute, JSProblemsRoute, JSProblemDetailRoute, JobsChennaiRoute, JobsChennaiDetailRoute, QuizRoute, QuizPlayRoute, VideosRoute, NamasteJSVideosRoute, CodevolutionReactVideosRoute, CodevolutionTypeScriptVideosRoute, StriverDSAVideosRoute, KevinPowellCssVideosRoute])
+const routeTree = RootRoute.addChildren([IndexRoute, AboutRoute, FrontendCodingRoute, FrontendCodingChallengeRoute, JSProblemsRoute, JSProblemDetailRoute, JobsChennaiRoute, JobsChennaiDetailRoute, QuizRoute, QuizPlayRoute, VideosRoute, NamasteJSVideosRoute, CodevolutionReactVideosRoute, CodevolutionTypeScriptVideosRoute, StriverDSAVideosRoute, KevinPowellCssVideosRoute, QuestionsHubRoute, QuestionsReactRoute, QuestionDetailRoute])
 
 // Create the router
 const router = createRouter({

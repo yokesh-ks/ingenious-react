@@ -10,6 +10,7 @@ import {
 import { useTheme } from '@/hooks/useTheme'
 
 const NAV_LINKS = [
+  { label: 'Questions', href: '/questions' },
   { label: 'Frontend Coding', href: '/frontend-coding' },
   { label: 'JS Problems', href: '/js-problems' },
   { label: 'Quiz Play', href: '/quiz' },
