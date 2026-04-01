@@ -41,7 +41,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
         <div className="mx-auto w-full max-w-7xl px-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-2 md:flex-row">
             <span className="text-sm text-gray-400">
-              Copyright &copy; 2024 by{' '}
+              Copyright &copy; 2026 by{' '}
               <a
                 href="https://www.ingeniousclan.com/"
                 target="_blank"
