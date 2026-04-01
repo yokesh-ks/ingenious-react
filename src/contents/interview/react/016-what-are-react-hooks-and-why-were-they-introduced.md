@@ -56,7 +56,3 @@ function Counter() {
 - `useReducer` — complex state logic
 - `useRef` — DOM references / mutable values
 - `useMemo` / `useCallback` — performance optimization
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

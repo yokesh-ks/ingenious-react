@@ -87,7 +87,3 @@ function UserProfile({ userId }) {
 Rarely — most cases are better handled with `useEffect` or by computing derived values directly during render. Overusing it makes components hard to understand.
 
 Good rule of thumb: prefer computing values in render over storing them in state.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

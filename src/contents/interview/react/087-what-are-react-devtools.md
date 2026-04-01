@@ -86,7 +86,3 @@ function onRender(id, phase, actualDuration) {
   <ProductList items={items} />
 </Profiler>
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

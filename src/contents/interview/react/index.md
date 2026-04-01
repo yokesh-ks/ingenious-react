@@ -1,7 +1,6 @@
 # React Interview Questions & Answers
 
 > **100 questions** covering React fundamentals to advanced topics.
-> Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)
 
 ---
 

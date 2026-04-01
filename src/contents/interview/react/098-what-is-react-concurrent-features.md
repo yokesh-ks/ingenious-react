@@ -163,7 +163,3 @@ function App() {
 | Deferred value | `useDeferredValue` | Keep old value while new one loads |
 | Automatic batching | Built-in | Group multiple state updates |
 | Suspense streaming | `<Suspense>` | Show parts of page as they're ready |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

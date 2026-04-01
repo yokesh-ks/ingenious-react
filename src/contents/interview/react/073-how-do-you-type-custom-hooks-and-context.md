@@ -136,7 +136,3 @@ function List<T>({ items, renderItem, keyExtractor, emptyMessage }: ListProps<T>
   keyExtractor={user => user.id.toString()}
 />
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

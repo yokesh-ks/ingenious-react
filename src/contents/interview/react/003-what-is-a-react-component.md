@@ -42,7 +42,3 @@ Both function and class components can receive data via two main routes:
 Class components support a series of **lifecycle methods**. These can be used to run code at specific points in the component's lifecycle, such as upon mounting (creation), updating, or unmounting (removal).
 
 Custom classes and the lifecycle methods within were the primary mechanism for side effects earlier in React. While class-based components aren't as central to the framework with the advent of hooks, they're still relevant and in use, especially when using versions < 16.8.1 and realizing the components' lifecycle patterns in codebases.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

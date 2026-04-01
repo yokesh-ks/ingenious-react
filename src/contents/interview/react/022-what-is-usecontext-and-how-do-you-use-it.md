@@ -101,7 +101,3 @@ export function useTheme() {
   return ctx;
 }
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

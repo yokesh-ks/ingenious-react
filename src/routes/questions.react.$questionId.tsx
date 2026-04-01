@@ -91,18 +91,12 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  // Extract source link if present
-  const sourceMatch = question.content.match(/\*Source:\s*\[([^\]]+)\]\(([^)]+)\)\*/)
-  const sourceLink = sourceMatch ? { name: sourceMatch[1], url: sourceMatch[2] } : null
-
   // Remove the title, metadata table, and source line from content for rendering
   let contentToRender = question.content
     // Remove the main title (e.g., "# Q1: What is React...")
     .replace(/^# Q\d+:\s*.+$/m, '')
     // Remove the metadata table (Category and Difficulty)
     .replace(/\|\s*\|\s*\|\s*\n\|---\|---\|\n\|\s*\*\*Category\*\*\s*\|.*\n\|\s*\*\*Difficulty\*\*\s*\|.*/, '')
-    // Remove the source line
-    .replace(/\*Source:\s*\[([^\]]+)\]\(([^)]+)\)\*/, '')
     .trim()
 
   return (
@@ -240,23 +234,6 @@ function QuestionDetail({ question }: { question: ReactQuestion }) {
             {contentToRender}
           </ReactMarkdown>
         </article>
-
-        {/* Source attribution */}
-        {sourceLink && (
-          <div className="mt-8 pt-6 border-t border-border">
-            <p className="text-sm text-muted-foreground">
-              Source:{' '}
-              <a
-                href={sourceLink.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                {sourceLink.name}
-              </a>
-            </p>
-          </div>
-        )}
 
         {/* Navigation */}
         <div className="mt-8 pt-6 border-t border-border flex items-center justify-between">

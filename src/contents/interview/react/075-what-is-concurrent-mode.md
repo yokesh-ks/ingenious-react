@@ -89,7 +89,3 @@ Concurrent Mode is powered by **React Fiber**, introduced in React 16. Fiber bre
 - **Prioritized** — urgent updates run first
 - **Resumed** — continue where it left off
 - **Aborted** — discard and restart if stale
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

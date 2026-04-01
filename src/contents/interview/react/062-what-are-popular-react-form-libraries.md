@@ -113,7 +113,3 @@ function LoginForm() {
 | Best for | Performance | Simplicity |
 
 **Recommendation:** React Hook Form is generally preferred for new projects.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

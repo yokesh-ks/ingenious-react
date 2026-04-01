@@ -67,7 +67,3 @@ You may notice `console.log` firing twice in development — this is intentional
 ### StrictMode is safe to leave on
 
 Enable it for the entire app in development. It has **zero runtime cost in production** — `StrictMode` is completely stripped from production builds.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

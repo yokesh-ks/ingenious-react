@@ -98,7 +98,3 @@ function App() {
 - Dropdown menus
 - Notifications / toast messages
 - Full-screen overlays
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

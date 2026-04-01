@@ -119,6 +119,3 @@ test('loads and displays user', async () => {
 | `findBy*` | Async — wait for element to appear |
 | `getAllBy*` | Expect multiple elements |
 
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

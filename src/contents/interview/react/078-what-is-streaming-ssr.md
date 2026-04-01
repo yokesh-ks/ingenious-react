@@ -106,7 +106,3 @@ app/
     loading.tsx  ← shown while page.tsx fetches data
     page.tsx     ← Server Component that fetches data
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

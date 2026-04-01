@@ -129,7 +129,3 @@ const HeavyEditor = lazy(() => import('./HeavyEditor'));
 ### Impact
 
 A well-configured React app with tree shaking can reduce bundle size by **30–70%**, dramatically improving load times.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

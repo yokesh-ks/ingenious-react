@@ -68,7 +68,3 @@ const App: React.FC = () => {
 
 export default App;
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

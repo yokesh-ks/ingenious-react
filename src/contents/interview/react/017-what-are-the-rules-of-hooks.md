@@ -82,7 +82,3 @@ Add to your ESLint config:
 ```
 
 This plugin is included by default in Create React App and Vite's React templates.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

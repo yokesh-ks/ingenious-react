@@ -105,7 +105,3 @@ test('renders button', () => {
 - Components with dynamic content (timestamps, random IDs)
 - Components that change frequently
 - Testing behavior — use interaction tests instead
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

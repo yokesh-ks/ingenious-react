@@ -77,7 +77,3 @@ const count = useSelector(state => state.counter.value);
 ### Rule of thumb
 
 > Start with local state → lift to Context when needed → add Redux/Zustand when Context becomes a performance bottleneck or the app grows complex.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

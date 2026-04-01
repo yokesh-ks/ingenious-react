@@ -110,7 +110,3 @@ function RoleRoute({ allowedRoles }) {
   <Route path="/reports" element={<Reports />} />
 </Route>
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

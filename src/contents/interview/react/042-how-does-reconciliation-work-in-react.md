@@ -75,7 +75,3 @@ Before Fiber, reconciliation was synchronous and couldn't be interrupted. A slow
 With Fiber:
 - High-priority updates (user input) can interrupt low-priority renders
 - React can work on multiple versions of the UI simultaneously
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

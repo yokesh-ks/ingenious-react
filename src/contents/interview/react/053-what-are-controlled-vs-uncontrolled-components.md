@@ -88,7 +88,3 @@ Use **uncontrolled** for:
 - File inputs (which cannot be controlled — always use `ref`)
 - Simple forms where you only need the value on submit
 - Integrating with third-party DOM libraries
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

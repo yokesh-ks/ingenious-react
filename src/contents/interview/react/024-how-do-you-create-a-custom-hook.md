@@ -114,7 +114,3 @@ function useWindowSize() {
 1. Name must start with **`use`** — tells React and ESLint it's a Hook
 2. Can call other Hooks inside it
 3. Each component using the Hook gets **its own isolated state** — state is NOT shared between components
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

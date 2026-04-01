@@ -140,7 +140,3 @@ export const SubmitForm: Story = {
 - Teams where **designers review UI** before it ships
 - Components with **many states** (loading, error, empty, filled)
 - Projects that need **visual regression testing**
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

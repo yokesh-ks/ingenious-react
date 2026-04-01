@@ -81,7 +81,3 @@ function handleChange(event) {
 ```
 
 **In React 17+, event pooling was removed** — async access works fine without any workaround.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

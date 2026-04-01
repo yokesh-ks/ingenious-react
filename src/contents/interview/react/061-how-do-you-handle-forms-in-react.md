@@ -113,7 +113,3 @@ function SignupForm() {
 | `onSubmit` | Called when form is submitted |
 | Validation | Check fields before submitting |
 | `defaultValue` | Initial value for uncontrolled inputs |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

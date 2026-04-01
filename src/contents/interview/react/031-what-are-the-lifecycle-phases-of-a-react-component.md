@@ -94,7 +94,3 @@ All lifecycle behavior is handled by `useEffect` — the dependency array contro
 | `useEffect(() => {}, [])` | componentDidMount |
 | `useEffect(() => {}, [val])` | componentDidUpdate (for val) |
 | `useEffect(() => { return cleanup; }, [])` | componentWillUnmount |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

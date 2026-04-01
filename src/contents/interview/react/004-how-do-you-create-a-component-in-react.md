@@ -46,7 +46,3 @@ In the context of component creation, these standards can dictate whether to use
 - JSX offers a natural, HTML-like syntax for building components in React.
 - Components can be function-based or class-based.
 - Use modern editing tools and linters for improved code consistency and spotting potential issues in real-time.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

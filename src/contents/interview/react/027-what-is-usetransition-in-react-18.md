@@ -77,7 +77,3 @@ function SearchPage() {
 | Control | You wrap the state setter | You wrap the value |
 | Use when | You control the state update | You receive a value from props |
 | Pending indicator | `isPending` available | ❌ Not available |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

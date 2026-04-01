@@ -159,7 +159,3 @@ For frequently reused combinations, extract them in CSS:
 | DX speed | Fast once learned | Medium | Medium |
 | Customization | Config-based | Full CSS | Full CSS |
 | Popular for | Rapid UI | Component libraries | Design systems |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

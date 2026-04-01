@@ -96,7 +96,3 @@ npm install react@18 react-dom@18
 ```
 
 Then change `ReactDOM.render` → `createRoot`. Most existing React 17 code works without changes — Concurrent features are opt-in.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

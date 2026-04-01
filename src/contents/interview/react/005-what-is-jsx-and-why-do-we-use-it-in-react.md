@@ -54,7 +54,3 @@ const element = React.createElement('h1', null, 'Hello, World!');
 - **Development Efficiency**: By simplifying UI code and providing helpful developer features, JSX accelerates the development process.
 
 - **React Ecosystem Integration**: JSX is the preferred way to write components across the React ecosystem, fostering community best practices.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

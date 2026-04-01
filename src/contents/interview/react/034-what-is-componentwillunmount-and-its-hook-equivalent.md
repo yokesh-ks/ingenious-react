@@ -97,7 +97,3 @@ useEffect(() => {
 2. **Before** the effect runs again (when dependencies change)
 
 This means cleanup runs on both unmount and re-runs — so subscriptions don't leak between dependency changes.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

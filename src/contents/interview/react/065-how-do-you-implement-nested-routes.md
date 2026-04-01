@@ -110,7 +110,3 @@ function Settings() {
   return <p>Settings for {user.name}</p>;
 }
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

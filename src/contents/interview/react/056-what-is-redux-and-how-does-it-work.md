@@ -90,7 +90,3 @@ function Counter() {
 ✅ Complex async flows
 
 For smaller apps, Context API + useReducer is often sufficient.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

@@ -144,7 +144,3 @@ dist/assets/index-DzF3xGCA.js          87.45 kB │ gzip: 28.10 kB
 dist/assets/Dashboard-B3kJhLqP.js      42.31 kB │ gzip: 14.20 kB
 dist/assets/Products-CyTbwXkF.js       28.17 kB │ gzip:  9.80 kB
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

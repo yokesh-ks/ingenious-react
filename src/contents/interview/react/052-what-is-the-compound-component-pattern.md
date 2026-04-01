@@ -89,7 +89,3 @@ Tabs.Panel = TabPanel;
 ### Real-world examples
 
 This pattern is used in: **Radix UI**, **Headless UI**, **Reach UI**, **shadcn/ui**, React Select.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

@@ -155,7 +155,3 @@ RSC is supported in **Next.js 13+ (App Router)** today. Plain Vite/CRA don't sup
 ❌ Vite (client-only by default)
 ❌ Create React App
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

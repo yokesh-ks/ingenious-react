@@ -103,7 +103,3 @@ function UserCard({ name, age, isAdmin = false, onClick }: UserCardProps) {
 ### PropTypes only run in development
 
 PropTypes checks are **stripped in production builds** to avoid performance overhead. They only show warnings in `development` mode — never in production.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

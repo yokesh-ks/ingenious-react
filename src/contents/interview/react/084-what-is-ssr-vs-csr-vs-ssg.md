@@ -98,7 +98,3 @@ Static pages that auto-revalidate in the background after a specified time — c
 // app/products/[id]/page.tsx
 export const revalidate = 60; // revalidate every 60 seconds
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

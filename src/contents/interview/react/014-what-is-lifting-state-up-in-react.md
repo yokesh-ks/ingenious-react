@@ -83,7 +83,3 @@ In this example, the `RectangleAreaCalculator` maintains the `width` and `height
 For small-scale apps or in situations with data that lacks a clear **source of "truth"**, the technique might introduce unnecessary complexity.
 
 Aiming for a balance between centralized and localized state management is key, and React provides tools like `useContext` and `useState` that cater to both requirements.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

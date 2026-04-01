@@ -129,7 +129,3 @@ test('shows user', async () => {
 | Setup | Easy | Medium | Easy |
 | Works with any fetch lib | ✅ | ✅ | ❌ (library-specific) |
 | Best for | Quick one-off mocks | All API testing | Mocking specific functions |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

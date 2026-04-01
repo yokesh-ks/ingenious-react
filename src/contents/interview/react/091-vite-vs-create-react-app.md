@@ -109,7 +109,3 @@ export default defineConfig({
 ---
 
 **Bottom line:** Use Vite for all new React projects. There is no good reason to use CRA anymore.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

@@ -95,7 +95,3 @@ function Component() {
 ```
 
 Render props still appear in some libraries (older React Router API, Formik, Downshift, etc.).
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

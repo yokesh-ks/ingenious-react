@@ -128,7 +128,3 @@ router.push('/dashboard');
 | You need SSR/SSG | Pure SPA with no SEO needs |
 | You need API routes | Backend is completely separate |
 | Fast initial load matters | You already have a routing setup |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

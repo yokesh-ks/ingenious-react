@@ -106,7 +106,3 @@ function VirtualList({ items }) {
 | 100 items | Fast | Same |
 | 1,000 items | Slow | Fast |
 | 10,000 items | Browser hangs | Fast |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

@@ -110,7 +110,3 @@ const useBearStore = create<BearStore>()((set) => ({
   increase: (by) => set((state) => ({ bears: state.bears + by })),
 }));
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

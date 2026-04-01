@@ -86,7 +86,3 @@ const Counter = React.memo(
 ### Caution
 
 Incorrectly returning `false` from `shouldComponentUpdate` can cause **stale UI** — the component doesn't update when it should. Always profile before optimizing.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

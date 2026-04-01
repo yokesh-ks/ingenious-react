@@ -102,7 +102,3 @@ function withAuth(WrappedComponent) {
   return AuthComponent;
 }
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

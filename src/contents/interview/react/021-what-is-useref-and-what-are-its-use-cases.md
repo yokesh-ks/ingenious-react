@@ -99,7 +99,3 @@ const inputRef = useRef<HTMLInputElement>(null);
 const counterRef = useRef<number>(0);
 // counterRef.current is number (always defined)
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

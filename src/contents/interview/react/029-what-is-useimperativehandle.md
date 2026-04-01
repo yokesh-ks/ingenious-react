@@ -72,7 +72,3 @@ useImperativeHandle(ref, () => ({
 - You want to encapsulate the internal DOM structure
 
 ❌ Avoid overusing it — prefer the React data flow (props/state) whenever possible. Imperative APIs should be a last resort.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

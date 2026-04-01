@@ -85,7 +85,3 @@ useEffect(() => {
 |---|---|---|
 | Memoizes | A **value** | A **function** |
 | Returns | Result of `() => value` | The function itself |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

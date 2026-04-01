@@ -28,7 +28,3 @@ The **Virtual DOM** is a key concept in React, responsible for its high performa
 8. **Support for Cross-Platform Environments**: The Virtual DOM gives sturdy cross-platform capabilities, enabling consistent and optimized performance irrespective of the underlying operating system or hardware.
 
 React's Virtual DOM is primarily powered through its component architecture and extensive use of JavaScript, fundamentally changing how web applications are built and perform. Its virtuous efficiency is a testament to React's prowess as a leading front-end framework and contributes to the seamless user experiences React applications are known for providing.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

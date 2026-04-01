@@ -144,7 +144,3 @@ createRoot(container).render(<App />);
 ```
 
 Most React 17 apps work in React 18 with just this one change.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

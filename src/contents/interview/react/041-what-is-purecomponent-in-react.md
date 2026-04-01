@@ -81,7 +81,3 @@ Use `PureComponent` (or `React.memo`) when:
 - The component renders often but with the same props
 - The render is expensive
 - You follow **immutable data patterns** (always create new objects/arrays on change)
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

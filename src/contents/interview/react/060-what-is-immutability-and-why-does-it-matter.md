@@ -101,7 +101,3 @@ Redux Toolkit uses Immer internally, which is why you can "mutate" state in RTK 
 Mutated: oldObj === newObj → true → React skips update ❌
 Immutable: oldObj !== newObj → false → React re-renders ✅
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

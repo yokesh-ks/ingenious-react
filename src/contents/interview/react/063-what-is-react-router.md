@@ -99,7 +99,3 @@ import { NavLink } from 'react-router-dom';
   About
 </NavLink>
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

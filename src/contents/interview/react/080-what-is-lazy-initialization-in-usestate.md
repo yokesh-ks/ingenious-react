@@ -91,7 +91,3 @@ The performance gain is most noticeable when:
 - Parsing large JSON strings
 - Creating large initial arrays or maps
 - Any computation that takes more than a trivial amount of time
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

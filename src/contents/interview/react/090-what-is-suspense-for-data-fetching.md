@@ -164,7 +164,3 @@ Always pair Suspense (for loading) with ErrorBoundary (for errors):
   </Suspense>
 </ErrorBoundary>
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

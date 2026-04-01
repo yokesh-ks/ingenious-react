@@ -47,7 +47,3 @@
 - **For App-Wide Configurations**: It's useful for handling global configurations, such as themes or user authentication.
 
 - **Newer React Projects Involving Hooks**: Since the Context API underwent significant improvements with the introduction of Hooks, it's an appealing choice for new projects.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

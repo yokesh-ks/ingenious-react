@@ -83,7 +83,3 @@ useEffect(() => {
 | `useMemo(() => value, deps)` | A memoized **value** | Expensive computed values |
 
 `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

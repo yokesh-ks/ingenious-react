@@ -136,7 +136,3 @@ If any fail → commit is blocked (you must fix the errors first)
   }
 }
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

@@ -146,7 +146,3 @@ const authMiddleware = (store) => (next) => (action) => {
   return next(action);
 };
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

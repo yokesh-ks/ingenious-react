@@ -126,7 +126,3 @@ This identifies real bottlenecks — don't optimize blindly.
 | `React.lazy` | Large components not needed on initial load |
 | Virtualization | Lists > 100 items |
 | State splitting | Large Context causing too many re-renders |
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

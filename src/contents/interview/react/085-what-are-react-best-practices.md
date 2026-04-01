@@ -152,7 +152,3 @@ Wrap sections of your app so one broken widget doesn't crash the entire page:
   }
 }
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

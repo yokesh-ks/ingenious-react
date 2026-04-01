@@ -169,7 +169,3 @@ npm install --save-dev eslint-plugin-jsx-a11y
   "extends": ["plugin:jsx-a11y/recommended"]
 }
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

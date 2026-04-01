@@ -74,7 +74,3 @@ Use `useTransition` instead when you **own the state update** (you call the sett
 ### What it is NOT
 
 `useDeferredValue` is not debouncing or throttling — it doesn't add a time delay. It defers work until React has time, which is more efficient and integrates with Concurrent Mode.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

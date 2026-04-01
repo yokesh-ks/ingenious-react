@@ -48,7 +48,3 @@ class ClickCounter extends Component {
 
 export default ClickCounter;
 ```
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

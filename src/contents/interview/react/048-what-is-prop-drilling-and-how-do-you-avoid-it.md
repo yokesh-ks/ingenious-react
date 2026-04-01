@@ -93,7 +93,3 @@ Any component can subscribe directly to global state without prop chains.
 - Props are passed through 3+ unrelated levels
 - Many components need the same data
 - The "middlemen" components become polluted with unrelated props
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

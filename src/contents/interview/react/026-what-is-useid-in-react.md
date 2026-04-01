@@ -80,7 +80,3 @@ function PasswordField() {
 ### Important: not for list keys
 
 `useId` is for **accessibility attributes** (`id`, `aria-labelledby`, `htmlFor`), not for list `key` props. For list keys, use stable IDs from your data source.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*

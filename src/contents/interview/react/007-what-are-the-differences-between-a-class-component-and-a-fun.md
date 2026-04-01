@@ -106,7 +106,3 @@ Let's look at the various aspects and differences between **Class Components** a
   - Evolved to include hooks for state management.
   - Favored for their simplicity and ease of reusability.
   - Perfect for simpler, stateless components.
-
----
-
-*Source: [devinterview.io](https://devinterview.io/questions/web-and-mobile-development/react-interview-questions/)*
